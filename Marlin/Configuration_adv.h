@@ -373,7 +373,7 @@
  * Hotend Idle Timeout
  * Prevent filament in the nozzle from charring and causing a critical jam.
  */
-//#define HOTEND_IDLE_TIMEOUT
+#define HOTEND_IDLE_TIMEOUT
 #if ENABLED(HOTEND_IDLE_TIMEOUT)
 #define HOTEND_IDLE_TIMEOUT_SEC (5 * 60) // (seconds) Time without extruder movement to trigger protection
 #define HOTEND_IDLE_MIN_TRIGGER 180      // (°C) Minimum temperature to enable hotend protection
@@ -399,7 +399,7 @@
  */
 #define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-//#define CONTROLLER_FAN_PIN -1        // Set a custom pin for the controller fan
+#define CONTROLLER_FAN_PIN PC7 // Set a custom pin for the controller fan
 //#define CONTROLLER_FAN_USE_Z_ONLY    // With this option only the Z axis is considered
 //#define CONTROLLER_FAN_IGNORE_Z      // Ignore Z stepper. Useful when stepper timeout is disabled.
 #define CONTROLLERFAN_SPEED_MIN 0      // (0-255) Minimum speed. (If set below this value the fan is turned off.)
@@ -631,10 +631,10 @@
 #define X2_MIN_POS 80          // Set a minimum to ensure the  second X-carriage can't hit the parked first X-carriage
 #define X2_MAX_POS 353         // Set this to the distance between toolheads when both heads are homed
 #define X2_HOME_DIR 1          // Set to 1. The second X-carriage always homes to the maximum endstop position
-#define X2_HOME_POS X2_MAX_POS // Default X2 home position. Set to X2_MAX_POS.
-                               // However: In this mode the HOTEND_OFFSET_X value for the second extruder provides a software
-                               // override for X2_HOME_POS. This also allow recalibration of the distance between the two endstops
-                               // without modifying the firmware (through the "M218 T1 X???" command).
+#define X2_HOME_POS X2_MAX_POS // Default X2 home position. Set to X2_MAX_POS.                                                     \
+                               // However: In this mode the HOTEND_OFFSET_X value for the second extruder provides a software      \
+                               // override for X2_HOME_POS. This also allow recalibration of the distance between the two endstops \
+                               // without modifying the firmware (through the "M218 T1 X???" command).                             \
                                // Remember: you should set the second extruder x-offset to 0 in your slicer.
 
 // This is the default power-up mode which can be later using M605.
@@ -660,7 +660,7 @@
 
 #define HOMING_BUMP_MM \
   {                    \
-    0, 0, 2            \
+    5, 5, 2            \
   } // (mm) Backoff from endstops after first bump
 #define HOMING_BUMP_DIVISOR \
   {                         \
@@ -882,7 +882,7 @@
 // Increase the slowdown divisor for larger buffer sizes.
 #define SLOWDOWN
 #if ENABLED(SLOWDOWN)
-#define SLOWDOWN_DIVISOR 2
+#define SLOWDOWN_DIVISOR 8
 #endif
 
 /**
@@ -1178,14 +1178,14 @@
 #endif
 
 #if EITHER(SDSUPPORT, LCD_SET_PROGRESS_MANUALLY) && ANY(HAS_MARLINUI_U8GLIB, HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
-//#define SHOW_REMAINING_TIME       // Display estimated time to completion
+#define SHOW_REMAINING_TIME // Display estimated time to completion
 #if ENABLED(SHOW_REMAINING_TIME)
-//#define USE_M73_REMAINING_TIME  // Use remaining time from M73 command instead of estimation
-//#define ROTATE_PROGRESS_DISPLAY // Display (P)rogress, (E)lapsed, and (R)emaining time
+#define USE_M73_REMAINING_TIME  // Use remaining time from M73 command instead of estimation
+#define ROTATE_PROGRESS_DISPLAY // Display (P)rogress, (E)lapsed, and (R)emaining time
 #endif
 
 #if HAS_MARLINUI_U8GLIB
-//#define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits
+#define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits
 #endif
 
 #if EITHER(HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
@@ -1460,7 +1460,7 @@
 //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
 //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
 //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
-//#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
+#define STATUS_HEAT_PERCENT // Show heating in a progress bar
 //#define BOOT_MARLIN_LOGO_SMALL    // Show a smaller Marlin logo on the Boot Screen (saving 399 bytes of flash)
 //#define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~‭3260 (or ~940) bytes of PROGMEM.
 
@@ -3324,7 +3324,7 @@
  *
  * Implement M486 to allow Marlin to skip objects
  */
-//#define CANCEL_OBJECTS
+#define CANCEL_OBJECTS
 
 /**
  * I2C position encoders for closed loop control.
