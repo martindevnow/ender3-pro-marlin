@@ -660,14 +660,17 @@
 
 #define HOMING_BUMP_MM \
   {                    \
-    7, 7, 2            \
+    5, 5, 2            \
   } // (mm) Backoff from endstops after first bump
 #define HOMING_BUMP_DIVISOR \
   {                         \
     2, 2, 4                 \
   } // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
-//#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (mm) Backoff from endstops after homing
+#define HOMING_BACKOFF_POST_MM \
+  {                            \
+    10, 10, 10                 \
+  } // (mm) Backoff from endstops after homing
 
 #define QUICK_HOME // If G28 contains XY do a diagonal move first
 //#define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
@@ -719,7 +722,7 @@
    * differs, a mode set eeprom write will be completed at initialization.
    * Use the option below to force an eeprom write to a V3.1 probe regardless.
    */
-#define BLTOUCH_SET_5V_MODE
+// #define BLTOUCH_SET_5V_MODE
 
 /**
    * Safety: Activate if connecting a probe with an unknown voltage mode.
